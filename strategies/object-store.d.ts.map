@@ -1,0 +1,1 @@
+{"version":3,"file":"object-store.d.ts","sourceRoot":"","sources":["object-store.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,UAAU,EAAE,MAAM,eAAe,CAAC;AAIrD,qBAAa,WAAY,YAAW,QAAQ;IAExC,OAAO,CAAC,WAAW,CAAC;IACpB,OAAO,CAAC,MAAM,CAAC;IACf,OAAO,CAAC,MAAM,CAAC;IAEf,OAAO,CAAC,WAAW,CAqBjB;IAEF,QAAQ,2DAWN;IAEF,WAAW,sEAOV;CACJ"}
