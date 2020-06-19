@@ -1,6 +1,6 @@
 {
     "name": "sap-cf-capm-sqlite-persistence",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "main": "index.js",
     "repository": {
         "url": "https://github.com/TNFlexso/sap-cf-capm-sqlite-persistence.git"
@@ -15,12 +15,5 @@
         "@types/node": "^14.0.13",
         "aws-sdk": "^2.700.0",
         "cfenv": "^1.2.2"
-    },
-    "cds": {
-        "requires": {
-            "db": {
-                "kind": "sqlite"
-            }
-        }
     }
 }
