@@ -13,6 +13,7 @@
     "dependencies": {
         "@sap/cds": "^3.34.2",
         "aws-sdk": "^2.700.0",
+        "cf-nodejs-logging-support": "^6.3.0",
         "cfenv": "^1.2.2"
     }
 }

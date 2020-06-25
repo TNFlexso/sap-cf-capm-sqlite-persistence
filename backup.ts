@@ -1,5 +1,6 @@
 import { BackupData, strategies, strategyInstances } from "./interfaces";
 import { Persistence } from "./Persistence";
+import * as log from "cf-nodejs-logging-support";
 import '@sap/cds';
 
 export const backup = async (namespace: string, key: string, strategy: strategies, parameters?: any): Promise<any> => {
@@ -16,7 +17,7 @@ const extractData = async (namespace: string): Promise<BackupData[]> => {
     Object.keys(entities).forEach(entityName => {
       let entity = entities[entityName];
       if (entity["@sql.dump"]) {
-        console.log("Creating backup of entity " + entityName);
+        log.debug("Creating backup of entity " + entityName);
         mPromises.push(cds.run(SELECT.from(entity)).then((result: any) => {
           mResults.push({
             entityName: entityName,

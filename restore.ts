@@ -1,22 +1,24 @@
 import { BackupData, strategies, strategyInstances } from "./interfaces";
 import { localProject } from "./strategies"
 import { Persistence } from "./Persistence";
+import * as log from "cf-nodejs-logging-support";
 
 
 export const restore = async (namespace: string, key: string, strategy: strategies) => {
     if (await databaseIsEmpty(namespace)) {
+        log.info("Start data restore");
         try {
             const data = await readDataFromBackup(key, strategy);
             const recordCounts = await restoreData(namespace, data);
             recordCounts.forEach(recordCount => {
-                console.log(`Successfully inserted ${recordCount} records`)
+                log.debug(`Successfully inserted ${recordCount} records`)
             });
-            console.log("Backup has successfully been restored");
+            log.info("Backup has successfully been restored");
         } catch (e) {
-            console.log(e);
+            log.error(e);
         }
     } else {
-        console.log("Data is present, backup not necessary")
+        log.info("Data is present, backup not necessary")
     }
 };
 
@@ -33,13 +35,12 @@ const restoreData = async (namespace: string, restoreData: BackupData[]): Promis
     let mPromises = await Promise.all(restoreData.filter(data => entities[data.entityName] && data.data.length).map(async (data) => {
         let entity = entities[data.entityName];
         let records = data.data;
-        console.log(`Restoring ${records.length} records in entity ${data.entityName}`);
+        log.debug(`Restoring ${records.length} records in entity ${data.entityName}`);
         if (records.length) {
             return await tx.run(INSERT.into(entity).entries(records));
         } else {
             return true;
         }
-
     }));
     await tx.commit();
     return mPromises;
