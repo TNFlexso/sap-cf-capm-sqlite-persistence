@@ -11,9 +11,9 @@
         "url": "http://www.flexsodigital.com"
     },
     "dependencies": {
-        "@sap/cds": "^3.34.2",
+        "@sap/cds": "^6.4.0",
         "aws-sdk": "^2.700.0",
-        "cf-nodejs-logging-support": "^6.3.0",
+        "cf-nodejs-logging-support": "^6.14.0",
         "cfenv": "^1.2.2"
     }
 }
